@@ -11,5 +11,9 @@ class Sepatu extends Model
         return $this->belongsTo(ModelSepatu::class);
     }
 
+    public function Supplier() {
+        return $this->belongsTo(Supplier::class);
+    }
+
     use HasFactory;
 }

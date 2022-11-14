@@ -11,9 +11,5 @@ class ModelBaju extends Model
         return $this->hasMany(Baju::class);
     }
 
-    public function Supplier() {
-        return $this->belongsTo(Supplier::class);
-    }
-
     use HasFactory;
 }

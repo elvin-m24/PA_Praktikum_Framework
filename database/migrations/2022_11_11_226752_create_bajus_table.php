@@ -13,16 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sepatus', function (Blueprint $table) {
-            $table->id();
+        Schema::create('bajus', function (Blueprint $table) {
+            $table->id()->unique();
             $table->string('nama',30);
             $table->string('foto');
             $table->string('ukuran',20);
             $table->string('warna',50);
             $table->integer('jumlah');
-            $table->foreignId("model_sepatu_id");
+            $table->string('status');
+            $table->foreignId("model_baju_id");
             $table->foreignId("supplier_id");
-            $table->timestamps();            
+            $table->timestamps();
+            $table->foreign("model_baju_id")->references("id")->on("model_bajus");
+            $table->foreign("supplier_id")->references("id")->on("suppliers");
         });
     }
 
@@ -33,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sepatus');
+        Schema::dropIfExists('bajus');
     }
 };
